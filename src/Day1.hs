@@ -1,6 +1,7 @@
 module Day1
     ( fuelRequired,
-      totalFuelRequired
+      totalFuelRequired,
+      runDay1
     ) where
 
 -- warning, this function doesn't account for low/negative mass numbers
@@ -13,3 +14,9 @@ totalFuelRequired mass
         | otherwise = 0
     where fuelMass = fuelRequired mass 
 
+runDay1 :: [Integer] -> IO ()
+runDay1 masses = do 
+    putStrLn "Day 1, part 1 results:"
+    print $ sum $ fmap fuelRequired masses
+    putStrLn "Day 1, part 2 results:"
+    print $ sum $ fmap totalFuelRequired masses
