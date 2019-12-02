@@ -3,4 +3,4 @@ module Day1
     ) where
 
 fuelRequired :: Integer -> Integer
-fuelRequired mass = 0
+fuelRequired mass = mass `div` 3 - 2
