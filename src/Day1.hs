@@ -9,10 +9,7 @@ fuelRequired :: Integer -> Integer
 fuelRequired mass = mass `div` 3 - 2
 
 totalFuelRequired :: Integer -> Integer
-totalFuelRequired mass 
-        | fuelMass > 0 = fuelMass + totalFuelRequired fuelMass
-        | otherwise = 0
-    where fuelMass = fuelRequired mass 
+totalFuelRequired mass = sum $ takeWhile (> 0) $ iterate fuelRequired (fuelRequired mass)
 
 runDay1 :: [Integer] -> String
 runDay1 masses =  
