@@ -14,9 +14,10 @@ totalFuelRequired mass
         | otherwise = 0
     where fuelMass = fuelRequired mass 
 
-runDay1 :: [Integer] -> IO ()
-runDay1 masses = do 
-    putStrLn "Day 1, part 1 results:"
-    print $ sum $ fmap fuelRequired masses
-    putStrLn "Day 1, part 2 results:"
-    print $ sum $ fmap totalFuelRequired masses
+runDay1 :: [Integer] -> String
+runDay1 masses =  
+    "Day 1, part 1 results:\n" ++ 
+    (show $ sum $ fmap fuelRequired masses) ++ "\n" ++
+    "Day 1, part 2 results:\n" ++
+    (show $ sum $ fmap totalFuelRequired masses)
+

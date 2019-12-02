@@ -6,4 +6,4 @@ main :: IO ()
 main = do
         contents <- getContents
         let allLines = lines contents
-        runDay1 $ fmap read allLines
+        putStrLn $ runDay1 $ fmap read allLines
