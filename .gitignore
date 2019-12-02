@@ -1,0 +1,5 @@
+.stack-work/
+AdventOfCode2019.cabal
+*~
+*.swp
+*.lock
