@@ -46,3 +46,5 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - AdventOfCode2019
+    - hspec >= 2.7
+
