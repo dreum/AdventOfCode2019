@@ -5,6 +5,7 @@ module Day2
     ) where
 
 import Control.Lens
+import Control.Monad
 
 opcodeLookup :: Int -> Int -> Int -> Int
 opcodeLookup opcode
@@ -30,7 +31,18 @@ intCodeMultiHelper position codes = let opcode = codes !! position
 intCodeMulti :: [Int] -> [Int]
 intCodeMulti codes = intCodeMultiHelper 0 codes
 
+editCodes arg1 arg2 codes = (element 1 .~ arg1) tempCodes
+                        where tempCodes = (element 2 .~ arg2) codes
+
+part2Runner codes = do 
+                arg1 <- [0..99]
+                arg2 <- [0..99]
+                let editedCodes = editCodes arg1 arg2 codes
+                let newCodes = intCodeMulti editedCodes
+                guard ((newCodes !! 0) == 19690720) 
+                [(arg1, arg2)]
+
 runDay2 codes = "Day2 part 1:\n" ++ 
-                (show ((intCodeMulti editedCodes1) !! 0))
-                where editedCodesTemp = (element 1 .~ 12) codes
-                      editedCodes1 = (element 2 .~ 2) editedCodesTemp
+                (show ((intCodeMulti $ editCodes 12 2 codes) !! 0)) ++ "\n" ++
+                "Day2 part 2:\n" ++
+                (show $ part2Runner $ codes)
