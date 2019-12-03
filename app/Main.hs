@@ -7,11 +7,11 @@ import System.Exit
 import System.Environment
 import Data.Char
 
-switchOnDay :: String -> [Int] -> String
-switchOnDay day
-    | (fmap toLower day) == "day1" = runDay1
-    | (fmap toLower day) == "day2" = runDay2
-    | otherwise = (\_ -> "invalid input: please include a valid day you want to run")
+switchOnDay :: String -> String -> String
+switchOnDay day contents
+    | (fmap toLower day) == "day1" = runDay1 $ fmap read $ lines contents
+    | (fmap toLower day) == "day2" = runDay2 $ read contents
+    | otherwise = "invalid input: please include a valid day you want to run"
 
 main :: IO ()
 main = do
@@ -19,9 +19,8 @@ main = do
     case args of 
         [dayArgument] -> do   
             contents <- getContents
-            let allLines = fmap read $ lines contents
-            let runner = switchOnDay dayArgument
-            putStrLn $ runner allLines
+            let output = switchOnDay dayArgument contents
+            putStrLn output
         _ -> do
             name <- getProgName
             hPutStrLn stderr $ "usage: " ++ name ++ " dayN"
