@@ -1,4 +1,8 @@
-module Day2 (intCode) where
+module Day2 
+    ( intCode,
+      intCodeMulti,
+      runDay2
+    ) where
 
 import Control.Lens
 
@@ -16,3 +20,14 @@ intCode startPos codes = let
             result = operator arg1 arg2
             in (element resultPos .~ result) codes
 
+intCodeMultiHelper :: Int -> [Int] -> [Int]
+intCodeMultiHelper position codes = let opcode = codes !! position
+    in case opcode of 
+        99 -> codes
+        _ -> intCodeMultiHelper (position + 4) newCodes
+            where newCodes = intCode position codes
+
+intCodeMulti :: [Int] -> [Int]
+intCodeMulti codes = intCodeMultiHelper 0 codes
+
+runDay2 = show . intCodeMulti
