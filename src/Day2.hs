@@ -30,4 +30,7 @@ intCodeMultiHelper position codes = let opcode = codes !! position
 intCodeMulti :: [Int] -> [Int]
 intCodeMulti codes = intCodeMultiHelper 0 codes
 
-runDay2 = show . intCodeMulti
+runDay2 codes = "Day2 part 1:\n" ++ 
+                (show ((intCodeMulti editedCodes1) !! 0))
+                where editedCodesTemp = (element 1 .~ 12) codes
+                      editedCodes1 = (element 2 .~ 2) editedCodesTemp
