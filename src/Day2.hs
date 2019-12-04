@@ -45,4 +45,4 @@ part2Runner codes = do
 runDay2 codes = "Day2 part 1:\n" ++ 
                 (show ((intCodeMulti $ editCodes 12 2 codes) !! 0)) ++ "\n" ++
                 "Day2 part 2:\n" ++
-                (show $ part2Runner $ codes)
+                (show $ part2Runner codes)
