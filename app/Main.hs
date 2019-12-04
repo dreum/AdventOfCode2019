@@ -2,6 +2,7 @@ module Main where
 
 import Day1
 import Day2
+import Day3
 import System.IO
 import System.Exit
 import System.Environment
@@ -11,6 +12,7 @@ switchOnDay :: String -> String -> String
 switchOnDay day contents
     | (fmap toLower day) == "day1" = runDay1 $ fmap read $ lines contents
     | (fmap toLower day) == "day2" = runDay2 $ read contents
+    | (fmap toLower day) == "day3" = runDay3 $ lines contents
     | otherwise = "invalid input: please include a valid day you want to run"
 
 main :: IO ()
