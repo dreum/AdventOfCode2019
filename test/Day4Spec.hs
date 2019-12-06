@@ -10,6 +10,9 @@ spec = do
     describe "Duplicates" $ do
         it "reports false for non-duplicates" $ do
             hasDuplicate [1,2] `shouldBe` False
+    describe "Duplicates" $ do
+        it "reports false for non-exact duplicates" $ do
+            hasDuplicate2 [1,2,2,2] `shouldBe` False
     describe "Non decreasing" $ do
         it "reports true for increasing numbers" $ do
             nonDecreasing [1,2] `shouldBe` True
