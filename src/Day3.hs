@@ -93,5 +93,5 @@ runDay3 :: [String] -> String
 runDay3 [wire1, wire2] = "Day3 part 1:\n" ++
                          (part1 wire1 wire2) ++ "\n" ++
                          "part 2: \n" ++
-                         (part2 wire1 wire2) ++ "\n" ++
+                         (part2 wire1 wire2) ++ "\n"
 
